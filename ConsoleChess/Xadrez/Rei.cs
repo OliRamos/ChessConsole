@@ -1,4 +1,4 @@
-﻿using ConsoleChess.tabuleiro;
+﻿using System;
 using tabuleiro;
 
 namespace Xadrez

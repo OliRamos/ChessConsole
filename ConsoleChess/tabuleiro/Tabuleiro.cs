@@ -1,7 +1,7 @@
 ﻿using System;
 using tabuleiro;
 
-namespace ConsoleChess.tabuleiro
+namespace tabuleiro
 {
     class Tabuleiro
     {
@@ -17,16 +17,50 @@ namespace ConsoleChess.tabuleiro
             pecas = new Peca[linhas, colunas];
         }
 
-        // método para poder informar posição das peças no tabuleiro
-        public Peca peca(int linha, int coluna)
+        
+        public Peca peca(int linha, int coluna) //método para poder informar outras classes a posição das peças no tabuleiro
         {
             return pecas[linha, coluna];
         }
 
+        public Peca peca(Posicao pos)
+        {
+            return pecas[pos.linha, pos.coluna];
+        }
+
+        public bool existePeca(Posicao pos) //testa se existe peça ou se posicao está vazia
+        {
+            validarPosicao(pos);
+            return peca(pos) != null;
+        }
+
         public void colocarPeca(Peca p, Posicao pos)
         {
+           if (existePeca(pos)) //teste se já tem uma peça na posição
+            {
+                throw new TabuleiroException("Já existe uma peça nessa posição!");
+            }
             pecas[pos.linha, pos.coluna] = p;
             p.posicao = pos;
+        }
+
+        public bool posicaoValida(Posicao pos) //testa se a posição está dentro do tabuleiro.
+        {
+            if (pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas)
+            {
+                return false;
+            }
+            return true;
+
+
+        }
+
+        public void validarPosicao(Posicao pos) //tratamento de exceção de peça em posição inválida
+        {
+            if (!posicaoValida(pos)) 
+            {
+                throw new TabuleiroException("Posição inválida!");
+            }
         }
 
 

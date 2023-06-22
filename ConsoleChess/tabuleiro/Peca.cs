@@ -1,5 +1,4 @@
-﻿using ConsoleChess.tabuleiro;
-using System;
+﻿using System;
 using tabuleiro;
 
 namespace tabuleiro
