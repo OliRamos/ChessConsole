@@ -44,6 +44,19 @@ namespace tabuleiro
             p.posicao = pos;
         }
 
+        public Peca retirarPeca(Posicao pos)
+        {
+            if (peca(pos) == null)
+            {
+                return null;
+            }
+            Peca aux = peca(pos);
+            aux.posicao = null; //coloca a peça que estava na posição recebida em posição nula
+            pecas[pos.linha, pos.coluna] = null; //marca a posição no tabuleiro como nula
+            return aux;
+
+        }
+
         public bool posicaoValida(Posicao pos) //testa se a posição está dentro do tabuleiro.
         {
             if (pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas)
