@@ -13,6 +13,7 @@ namespace ConsoleChess
             try
             {
                 PartidaDeXadrex partida = new PartidaDeXadrex();
+
                 while (!partida.terminada)
                 {
                     try
@@ -42,8 +43,9 @@ namespace ConsoleChess
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
-
                 }
+                Console.Clear();
+                Tela.imprimirPartida(partida);
             }
             catch (TabuleiroException e)
             {
