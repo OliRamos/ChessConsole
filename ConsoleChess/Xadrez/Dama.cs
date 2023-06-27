@@ -76,7 +76,7 @@ namespace Xadrez
                 pos.definirValores(pos.linha, pos.coluna - 1);
             }
 
-            pos.definirValores(posicao.linha + 1, posicao.coluna + 1); //Nordeste
+            pos.definirValores(posicao.linha - 1, posicao.coluna + 1); //Nordeste
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
